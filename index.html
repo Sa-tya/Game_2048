@@ -73,16 +73,25 @@
             y=0;
             for(let j=0;j<4;++j){
                 x=0;
+                let flag = false
                 for(let i=1;i<4;++i){
-
-                    if(grid[i][j] === grid[i-1][j]){
+                    if(!grid[i][j]) break;
+                    else if(grid[i][j] === grid[i-1][j]){
                         grid[x++][y] = grid[i][j] + grid[i-1][j]
                         grid[i][j] = 0
+                        flag=true
                     // i++;
                 }
-                    else if(grid[i][j]){
+                    else {//if(grid[i][j]){
+                        // x += 1;
+                        if(flag){
+                        grid[x++][y] = grid[i][j];
+                        grid[i][j]=0
+                    }
+                    else {
                         x += 1;
-                    } else break;
+                    }
+                    }
                 }
                 y++;
             }
@@ -106,18 +115,23 @@
             y=0;
             for(let j=0;j<4;++j){
                 x=3;
+                let flag = false
                 for(let i=2;i>=0;--i){
-
-                    if(grid[i][j] === grid[i+1][j]){
+                    if(!grid[i][j]) break;
+                    else if(grid[i][j] === grid[i+1][j]){
                         grid[x--][y] = grid[i][j] + grid[i+1][j]
                         grid[i][j] = 0
+                        flag = true
                     // i++;
                 }
-                    else if(grid[i][j]){
-                        x -= 1;
-                    } else break;
-
-
+                    else {//if(grid[i][j]){
+                        // x -= 1;
+                        if(flag){
+                        grid[x--][y] = grid[i][j];
+                        grid[i][j] = 0;
+                        }
+                        else x -= 1;
+                    }
                 }
                 y++;
             }
@@ -142,14 +156,22 @@
             x=0;
             for(let i=0;i<4;++i){
                 y=0;
+                let flag =false
                 for(let j=1;j<4;++j){
-                    if(grid[i][j] === grid[i][j-1]){
+                    if(!grid[i][j]) break;
+                    else if(grid[i][j] === grid[i][j-1]){
                         grid[x][y++] = grid[i][j] + grid[i][j-1];
                         grid[i][j] = 0;
-
+                        flag = true
                     }
-                    else if(grid[i][j]) y++;
-                    else break;
+                    else {//if(grid[i][j]) {
+                    // y++;
+                    if(flag){
+                    grid[x][y++] = grid[i][j]
+                    grid[i][j] = 0;
+                    }
+                    else y += 1;
+                }
                 }
                 x++;
             }
@@ -174,13 +196,22 @@
             x=0
             for(let i=0;i<4;++i){
                 y=3;
-                for(let j=3;j>0;--j){ 
-                    if(grid[i][j] === grid[i][j-1]){
-                        grid[x][y--] = grid[i][j] + grid[i][j-1]
-                        grid[i][j-1] = 0
+                let flag = false
+                for(let j=2;j>=0;--j){
+                    if(!grid[i][j]) break;
+                    else if(grid[i][j] === grid[i][j+1]){
+                        grid[x][y--] = grid[i][j] + grid[i][j+1]
+                        grid[i][j] = 0
+                        flag = true
                     }
-                    else if(grid[i][j-1]) y--;
-                    else break;
+                    else {//if(grid[i][j]) {
+                        // y--;
+                        if(flag){
+                        grid[x][y--] = grid[i][j]
+                        grid[i][j] =0
+                        }
+                        else y -= 1;
+                    }
                 }
                 x++;
             }
