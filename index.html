@@ -69,20 +69,24 @@
                 ++y;
             }
             // Mixing...
-            // y=0;
-            // for(let j=0;j<4;++j){
-            //     x=0;
-            //     for(let i=1;i<4;++i){
-            //         if(grid[i][j] === grid[i-1][j]){
-            //             grid[x++][y] = grid[i][j] + grid[i-1][j]
-            //         i++;}
-            //         else {
-            //             x +=1;
-            //         }
+            y=0;
+            for(let j=0;j<4;++j){
+                x=0;
+                for(let i=1;i<4;++i){
+
+                    if(grid[i][j] === grid[i-1][j]){
+                        grid[x++][y] = grid[i][j] + grid[i-1][j]
+                        grid[i++][j] = 0
+                    // i++;
+                }
+                    else if(grid[i][j]){
+                        x += 1;
+                    } else break;
 
 
-            //     }
-            // }
+                }
+                y++;
+            }
 
             random_generate(getRandomInt(16));
         }
@@ -98,6 +102,25 @@
                     if(i <(x+1)) grid[i][j] = 0
                 }
                 ++y;
+            }
+            // Mixing...
+            y=0;
+            for(let j=0;j<4;++j){
+                x=3;
+                for(let i=3;i>0;--i){
+
+                    if(grid[i][j] === grid[i-1][j]){
+                        grid[x--][y] = grid[i][j] + grid[i-1][j]
+                        grid[--i][j] = 0
+                    // i++;
+                }
+                    else if(grid[i-1][j]){
+                        x -= 1;
+                    } else break;
+
+
+                }
+                y++;
             }
             random_generate(getRandomInt(16));
         }
@@ -116,6 +139,21 @@
                 }
                 ++x;
             }
+
+            x=0;
+            for(let i=0;i<4;++i){
+                y=0;
+                for(let j=1;j<4;++j){
+                    if(grid[i][j] === grid[i][j-1]){
+                        grid[x][y++] = grid[i][j] + grid[i][j-1];
+                        grid[i][j++] = 0;
+
+                    }
+                    else if(grid[i][j]) y++
+                    else break;
+                }
+                x++;
+            }
             random_generate(getRandomInt(16));
         }
 
@@ -126,13 +164,26 @@
                 for(let j=3;j>=0;--j){
                     if(grid[i][j]){
                        grid[x][y--] = grid[i][j];
-                    //    console.log(i,j,x,y,grid[x][y-1])
                     }
                     if(j < (y+1)){
                         grid[i][j]=0;
                     }
                 }
                 ++x;
+            }
+            // Addition
+            x=0
+            for(let i=0;i<4;++i){
+                y=3;
+                for(let j=3;j>0;--j){ 
+                    if(grid[i][j] === grid[i][j-1]){
+                        grid[x][y--] = grid[i][j] + grid[i][j-1]
+                        grid[i][j-1] = 0
+                    }
+                    else if(grid[i][j-1]) y--;
+                    else break;
+                }
+                x++;
             }
             random_generate(getRandomInt(16));
         }
