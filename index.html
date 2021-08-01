@@ -22,7 +22,8 @@
             [0, 0, 0, 0]
         ];
         var vacant = 0;
-        
+        // DOM manipulation
+
         const section = document.getElementById('section')
         for(let i=0;i<16;++i){
             let element = document.createElement('span');
@@ -76,14 +77,12 @@
 
                     if(grid[i][j] === grid[i-1][j]){
                         grid[x++][y] = grid[i][j] + grid[i-1][j]
-                        grid[i++][j] = 0
+                        grid[i][j] = 0
                     // i++;
                 }
                     else if(grid[i][j]){
                         x += 1;
                     } else break;
-
-
                 }
                 y++;
             }
@@ -107,14 +106,14 @@
             y=0;
             for(let j=0;j<4;++j){
                 x=3;
-                for(let i=3;i>0;--i){
+                for(let i=2;i>=0;--i){
 
-                    if(grid[i][j] === grid[i-1][j]){
-                        grid[x--][y] = grid[i][j] + grid[i-1][j]
-                        grid[--i][j] = 0
+                    if(grid[i][j] === grid[i+1][j]){
+                        grid[x--][y] = grid[i][j] + grid[i+1][j]
+                        grid[i][j] = 0
                     // i++;
                 }
-                    else if(grid[i-1][j]){
+                    else if(grid[i][j]){
                         x -= 1;
                     } else break;
 
@@ -139,17 +138,17 @@
                 }
                 ++x;
             }
-
+            // Adding...
             x=0;
             for(let i=0;i<4;++i){
                 y=0;
                 for(let j=1;j<4;++j){
                     if(grid[i][j] === grid[i][j-1]){
                         grid[x][y++] = grid[i][j] + grid[i][j-1];
-                        grid[i][j++] = 0;
+                        grid[i][j] = 0;
 
                     }
-                    else if(grid[i][j]) y++
+                    else if(grid[i][j]) y++;
                     else break;
                 }
                 x++;
