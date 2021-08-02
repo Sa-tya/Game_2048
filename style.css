@@ -1,9 +1,63 @@
 body {
     margin: 0;
 }
+*{
+    font-family: sans-serif;
+    border-radius: 5px;
+}
+#result {
+    visibility: hidden;
+}
+button {
+    padding: 10px 20px;
+    background-color: darkslateblue;
+    color: wheat;
+
+}
+a {
+    color: darkred;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bolder;
+}
+#h1 {
+    color: burlywood;
+    font-size: 50px;
+    font-family: cursive;
+    margin: 0;
+}
+.header {
+    display: flex;
+    margin: 2% auto;
+    background-color: cornflowerblue;
+    /* flex-flow: row nowrap; */
+    width: 500px;
+    padding: 10px;
+    justify-content: space-between;
+    
+    /* height: 200px; */
+    border: 1px solid black;
+}
+.poster {
+    padding: 20px;
+    text-align: center;
+}
+#rule {
+    margin: 5% auto;
+    width: 400px;
+    padding: 20px;
+    background-color: slategray;
+    color: snow;
+}
+#scoreCard {
+    /* width: 200px; */
+    padding: 10px;
+    background-color: cyan;
+    border: 1px solid black;
+}
 #section {
     border: 15px solid coral;
-    margin: 5% auto;
+    margin: 1% auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
     width: 400px;
@@ -17,6 +71,6 @@ body {
     min-width: 80px;
     min-height: 80px;
     font-weight: bolder;
-    font-size: 500%;
+    font-size: 2.5vw;
     text-align: center;
 }
