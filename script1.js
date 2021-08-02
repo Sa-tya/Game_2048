@@ -1,4 +1,8 @@
-var grid = [];
+        var grid = [];
+
+            if(localStorage.score === undefined)
+            localStorage.setItem("score",0);
+            
         var vacant = 0,score = 0;
         const section = document.getElementById('section')
         // DOM manipulation
@@ -42,12 +46,18 @@ var grid = [];
             if(!vacant){
                     setTimeout(()=> {
                         document.getElementById('modal').style.display = "block"
+                        document.getElementById('mscore').innerHTML = score
                         // alert("try again...")
                     // location.reload()
                     // startingPoint()
                     },1000)
                 }
-                // if()
+                if( localStorage.score < score)
+                localStorage.score = score
+                // else
+                // localStorage.setItem("score",score)
+                document.getElementById('pscore').innerHTML = localStorage.score
+                // else 
         }
         
         function resume(){
