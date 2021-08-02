@@ -42,7 +42,7 @@
                 if(! grid[Math.floor(i/4)][Math.floor(i%4)])
                 vacant++;
             }
-            // vacant = 0
+             vacant = 0
             if(!vacant){
                     setTimeout(()=> {
                         document.getElementById('modal').style.display = "block"
